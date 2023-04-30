@@ -29,6 +29,8 @@
     "@wordpress/scripts": "^26.3.0"
   },
   "devDependencies": {
-    "@wordpress/api-fetch": "^6.29.0"
+    "@wordpress/api-fetch": "^6.29.0",
+    "@wordpress/components": "^23.9.0",
+    "@wordpress/data": "^9.2.0"
   }
 }
