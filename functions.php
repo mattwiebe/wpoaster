@@ -7,8 +7,8 @@ function register_wpoaster_block() {
 	] );
 	//add wp_inline_script with login and password constants
 	$login_vars = [];
-	$login_vars['identifier'] = defined( 'POASTER_LOGIN' ) ? POASTER_LOGIN : '';
-	$login_vars['password'] = defined( 'POASTER_PASSWORD' ) ? POASTER_PASSWORD : '';
+	$login_vars['identifier'] = defined( 'WPOASTER_LOGIN' ) ? WPOASTER_LOGIN : '';
+	$login_vars['password'] = defined( 'WPOASTER_PASSWORD' ) ? WPOASTER_PASSWORD : '';
 	$script = sprintf( 'window._wpoasterLogin = %s;', json_encode( $login_vars ) );
 	wp_add_inline_script( 'mw-wpoaster-view-script', $script, 'before' );
 }

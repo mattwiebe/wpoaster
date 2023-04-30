@@ -49,7 +49,7 @@ module.exports = window["wp"]["element"];
   \***************************************/
 /***/ (function(module) {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"mw/poaster","title":"WPoaster","category":"other","description":"Render a post box for WP + Bluesky","editorScript":"file:./index.js","viewScript":"file:./view.js"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"mw/wpoaster","title":"WPoaster","category":"other","description":"Render a post box for WP + Bluesky","editorScript":"file:./index.js","viewScript":"file:./view.js"}');
 
 /***/ })
 
