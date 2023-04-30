@@ -1,5 +1,5 @@
 {
-  "name": "poaster",
+  "name": "wpoaster",
   "version": "0.1.0",
   "description": "Poast to WP + Bluesky",
   "main": "src/index.js",
@@ -10,25 +10,26 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mattwiebe/poaster.git"
+    "url": "git+https://github.com/mattwiebe/wpoaster.git"
   },
   "keywords": [
     "wordpress",
     "atproto",
     "bluesky",
-    "poast"
+    "poast",
+    "react"
   ],
   "author": "Matt Wiebe",
   "license": "GPL-2.0-or-later",
   "bugs": {
-    "url": "https://github.com/mattwiebe/poaster/issues"
+    "url": "https://github.com/mattwiebe/wpoaster/issues"
   },
-  "homepage": "https://github.com/mattwiebe/poaster#readme",
+  "homepage": "https://github.com/mattwiebe/wpoaster#readme",
   "dependencies": {
-    "@atproto/api": "^0.2.11",
-    "@wordpress/scripts": "^26.3.0"
   },
   "devDependencies": {
+    "@atproto/api": "^0.2.11",
+    "@wordpress/scripts": "^26.3.0",
     "@wordpress/api-fetch": "^6.29.0",
     "@wordpress/blocks": "^12.9.0",
     "@wordpress/components": "^23.9.0",
