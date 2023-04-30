@@ -49,11 +49,11 @@ export const WPoaster = () => {
 	return (
 		<div className="wpoaster-block">
 			<TextareaControl
-				label="Poast"
+				label="WPoast"
 				value={ text }
 				onChange={ ( value ) => setText( value ) }
 			/>
-			<Button isPrimary onClick={ () => sendPost( text ) }>Poast!</Button>
+			<Button isPrimary onClick={ () => sendPost( text ) }>WPoast!</Button>
 		</div>
 	);
 }

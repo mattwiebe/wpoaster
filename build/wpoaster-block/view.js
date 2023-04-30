@@ -16961,13 +16961,13 @@ const WPoaster = () => {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "wpoaster-block"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextareaControl, {
-    label: "Poast",
+    label: "WPoast",
     value: text,
     onChange: value => setText(value)
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
     isPrimary: true,
     onClick: () => sendPost(text)
-  }, "Poast!"));
+  }, "WPoast!"));
 };
 
 /***/ }),
