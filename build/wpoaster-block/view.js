@@ -16889,10 +16889,10 @@ var BskyAgent = class extends AtpAgent {
 
 /***/ }),
 
-/***/ "./src/poaster-block/poast-component.js":
-/*!**********************************************!*\
-  !*** ./src/poaster-block/poast-component.js ***!
-  \**********************************************/
+/***/ "./src/wpoaster-block/wpoast-component.js":
+/*!************************************************!*\
+  !*** ./src/wpoaster-block/wpoast-component.js ***!
+  \************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
@@ -16919,7 +16919,7 @@ const logIn = async () => {
   const agent = new _atproto_api__WEBPACK_IMPORTED_MODULE_2__.BskyAgent({
     service: 'https://bsky.social/'
   });
-  await agent.login(window._poasterLogin);
+  await agent.login(window._wpoasterLogin);
   return agent;
 };
 async function getAgent() {
@@ -16959,7 +16959,7 @@ const WPoaster = () => {
     setText('');
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "poaster-block"
+    className: "wpoaster-block"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextareaControl, {
     label: "Poast",
     value: text,
@@ -17093,22 +17093,22 @@ module.exports = window["wp"]["element"];
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 !function() {
-/*!***********************************!*\
-  !*** ./src/poaster-block/view.js ***!
-  \***********************************/
+/*!************************************!*\
+  !*** ./src/wpoaster-block/view.js ***!
+  \************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/dom-ready */ "@wordpress/dom-ready");
 /* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _poast_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./poast-component */ "./src/poaster-block/poast-component.js");
+/* harmony import */ var _wpoast_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./wpoast-component */ "./src/wpoaster-block/wpoast-component.js");
 
 
 
 
 _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1___default()(() => {
-  document.querySelectorAll('.poaster-block').forEach(el => {
-    (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.render)((0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_poast_component__WEBPACK_IMPORTED_MODULE_2__.Poaster, null), el);
+  document.querySelectorAll('.wpoaster-block').forEach(el => {
+    (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.render)((0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wpoast_component__WEBPACK_IMPORTED_MODULE_2__.WPoaster, null), el);
   });
 });
 }();

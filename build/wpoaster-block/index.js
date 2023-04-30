@@ -2,10 +2,10 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/poaster-block/edit.js":
-/*!***********************************!*\
-  !*** ./src/poaster-block/edit.js ***!
-  \***********************************/
+/***/ "./src/wpoaster-block/edit.js":
+/*!************************************!*\
+  !*** ./src/wpoaster-block/edit.js ***!
+  \************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
@@ -18,7 +18,7 @@ __webpack_require__.r(__webpack_exports__);
 function edit(props) {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: props.className
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", null, "Hell, World!"));
+  }, "This is a placeholder for the frontend WPoast function that allows you to post to Bluesky and WP from one simple Textbox.");
 }
 
 /***/ }),
@@ -43,13 +43,13 @@ module.exports = window["wp"]["element"];
 
 /***/ }),
 
-/***/ "./src/poaster-block/block.json":
-/*!**************************************!*\
-  !*** ./src/poaster-block/block.json ***!
-  \**************************************/
+/***/ "./src/wpoaster-block/block.json":
+/*!***************************************!*\
+  !*** ./src/wpoaster-block/block.json ***!
+  \***************************************/
 /***/ (function(module) {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"mw/poaster","title":"Poaster","category":"other","description":"Render a post box for WP + Bluesky","editorScript":"file:./index.js","viewScript":"file:./view.js"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"mw/poaster","title":"WPoaster","category":"other","description":"Render a post box for WP + Bluesky","editorScript":"file:./index.js","viewScript":"file:./view.js"}');
 
 /***/ })
 
@@ -124,14 +124,14 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 !function() {
-/*!************************************!*\
-  !*** ./src/poaster-block/index.js ***!
-  \************************************/
+/*!*************************************!*\
+  !*** ./src/wpoaster-block/index.js ***!
+  \*************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./block.json */ "./src/poaster-block/block.json");
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/poaster-block/edit.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./block.json */ "./src/wpoaster-block/block.json");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/wpoaster-block/edit.js");
 
 
 
@@ -139,7 +139,7 @@ const save = _ref => {
   let {
     attributes
   } = _ref;
-  return '<div class="poaster-block">From JS Save!</div>';
+  return '<div class="wpoaster-block">From JS Save!</div>';
 };
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)(_block_json__WEBPACK_IMPORTED_MODULE_1__, {
   edit: _edit__WEBPACK_IMPORTED_MODULE_2__.edit,

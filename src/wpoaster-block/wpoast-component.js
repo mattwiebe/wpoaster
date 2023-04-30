@@ -6,7 +6,7 @@ import { store as coreStore } from '@wordpress/core-data';
 
 const logIn = async () => {
 	const agent = new BskyAgent({ service: 'https://bsky.social/' });
-	await agent.login( window._poasterLogin );
+	await agent.login( window._wpoasterLogin );
 	return agent;
 }
 
@@ -47,7 +47,7 @@ export const WPoaster = () => {
 		setText( '' );
 	}
 	return (
-		<div className="poaster-block">
+		<div className="wpoaster-block">
 			<TextareaControl
 				label="Poast"
 				value={ text }

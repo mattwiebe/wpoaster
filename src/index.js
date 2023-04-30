@@ -2,7 +2,7 @@ import { BskyAgent } from '@atproto/api';
 
 const getAgent = async () => {
 	const agent = new BskyAgent({ service: 'https://bsky.social/' });
-	await agent.login( window._poasterLogin );
+	await agent.login( window._wpoasterLogin );
 	return agent;
 }
 
