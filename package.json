@@ -4,7 +4,9 @@
   "description": "Poast to WP + Bluesky",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "wp-scripts test",
+    "dev": "wp-scripts start",
+    "build": "wp-scripts build"
   },
   "repository": {
     "type": "git",
@@ -23,6 +25,10 @@
   },
   "homepage": "https://github.com/mattwiebe/poaster#readme",
   "dependencies": {
+    "@atproto/api": "^0.2.11",
     "@wordpress/scripts": "^26.3.0"
+  },
+  "devDependencies": {
+    "@wordpress/api-fetch": "^6.29.0"
   }
 }
