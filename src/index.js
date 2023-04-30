@@ -1,5 +1,4 @@
 import { BskyAgent } from '@atproto/api';
-import { TextareaControl } from '@wordpress/components';
 
 const getAgent = async () => {
 	const agent = new BskyAgent({ service: 'https://bsky.social/' });

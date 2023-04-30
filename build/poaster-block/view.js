@@ -16887,6 +16887,139 @@ var BskyAgent = class extends AtpAgent {
 //# sourceMappingURL=index.js.map
 
 
+/***/ }),
+
+/***/ "./src/poaster-block/poast-component.js":
+/*!**********************************************!*\
+  !*** ./src/poaster-block/poast-component.js ***!
+  \**********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Poaster": function() { return /* binding */ Poaster; }
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _atproto_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @atproto/api */ "./node_modules/@atproto/api/dist/index.js");
+/* harmony import */ var _atproto_api__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_atproto_api__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_core_data__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/core-data */ "@wordpress/core-data");
+/* harmony import */ var _wordpress_core_data__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_core_data__WEBPACK_IMPORTED_MODULE_4__);
+
+
+
+
+
+
+const logIn = async () => {
+  const agent = new _atproto_api__WEBPACK_IMPORTED_MODULE_2__.BskyAgent({
+    service: 'https://bsky.social/'
+  });
+  await agent.login(window._poasterLogin);
+  return agent;
+};
+async function getAgent() {
+  let agent;
+  await logIn().then(result => agent = result);
+  return agent;
+}
+async function doPost(content) {
+  const {
+    saveEntityRecord
+  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.dispatch)(_wordpress_core_data__WEBPACK_IMPORTED_MODULE_4__.store);
+  const title = content.length >= 140 ? content.substring(0, 140) + '...' : content;
+  return saveEntityRecord('postType', 'post', {
+    title,
+    content,
+    status: 'publish'
+  }).then(result => {
+    return doSkeet(content);
+  });
+}
+async function doSkeet(content) {
+  return getAgent().then(agent => {
+    agent.post({
+      text: content,
+      createdAt: new Date().toISOString()
+    }).then(result => {
+      debugger;
+      console.log('result', result);
+      return result;
+    });
+  });
+}
+const Poaster = () => {
+  const [text, setText] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  const sendPost = text => {
+    doPost(text);
+    setText('');
+  };
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "poaster-block"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextareaControl, {
+    label: "Poast",
+    value: text,
+    onChange: value => setText(value)
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
+    isPrimary: true,
+    onClick: () => sendPost(text)
+  }, "Poast!"));
+};
+
+/***/ }),
+
+/***/ "@wordpress/components":
+/*!************************************!*\
+  !*** external ["wp","components"] ***!
+  \************************************/
+/***/ (function(module) {
+
+module.exports = window["wp"]["components"];
+
+/***/ }),
+
+/***/ "@wordpress/core-data":
+/*!**********************************!*\
+  !*** external ["wp","coreData"] ***!
+  \**********************************/
+/***/ (function(module) {
+
+module.exports = window["wp"]["coreData"];
+
+/***/ }),
+
+/***/ "@wordpress/data":
+/*!******************************!*\
+  !*** external ["wp","data"] ***!
+  \******************************/
+/***/ (function(module) {
+
+module.exports = window["wp"]["data"];
+
+/***/ }),
+
+/***/ "@wordpress/dom-ready":
+/*!**********************************!*\
+  !*** external ["wp","domReady"] ***!
+  \**********************************/
+/***/ (function(module) {
+
+module.exports = window["wp"]["domReady"];
+
+/***/ }),
+
+/***/ "@wordpress/element":
+/*!*********************************!*\
+  !*** external ["wp","element"] ***!
+  \*********************************/
+/***/ (function(module) {
+
+module.exports = window["wp"]["element"];
+
 /***/ })
 
 /******/ 	});
@@ -16960,14 +17093,25 @@ var BskyAgent = class extends AtpAgent {
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 !function() {
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
+/*!***********************************!*\
+  !*** ./src/poaster-block/view.js ***!
+  \***********************************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _atproto_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @atproto/api */ "./node_modules/@atproto/api/dist/index.js");
-/* harmony import */ var _atproto_api__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_atproto_api__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/dom-ready */ "@wordpress/dom-ready");
+/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _poast_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./poast-component */ "./src/poaster-block/poast-component.js");
 
+
+
+
+_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1___default()(() => {
+  document.querySelectorAll('.poaster-block').forEach(el => {
+    (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.render)((0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_poast_component__WEBPACK_IMPORTED_MODULE_2__.Poaster, null), el);
+  });
+});
 }();
 /******/ })()
 ;
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=view.js.map
