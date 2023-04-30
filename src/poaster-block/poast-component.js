@@ -39,7 +39,7 @@ async function doSkeet( content ) {
 
 
 
-export const Poaster = () => {
+export const WPoaster = () => {
 	const [ text, setText ] = useState( '' );
 
 	const sendPost = ( text ) => {

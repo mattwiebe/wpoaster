@@ -1,16 +1,5 @@
 <?php
 
-function mw_theme_scripts() {
-	// rough security: only when logged-in
-	if ( ! is_user_logged_in() ) {
-		return;
-	}
-	$index_asset = require( get_stylesheet_directory() . '/build/index.asset.php' );
-	wp_enqueue_script( 'poaster', get_stylesheet_directory_uri() . '/build/index.js', $index_asset['dependencies'], $index_asset['version'], true );
-
-}
-#add_action( 'wp_enqueue_scripts', 'mw_theme_scripts' );
-
 add_action( 'init', 'register_poaster_block' );
 function register_poaster_block() {
 	error_log( 'foo' );
@@ -27,9 +16,3 @@ function register_poaster_block() {
 function render_poaster_block( $attrs, $content, $block ) {
 	return '<div class="poaster-block">We are so back</div>';
 }
-
-
-add_filter( 'stylesheet_directory_uri', function( $stylesheet_dir_uri, $stylesheet, $theme_root_uri ) {
-	l( 'stylesheet_directory_uri', $stylesheet_dir_uri, $stylesheet, $theme_root_uri );
-	return $stylesheet_dir_uri;
-}, 10, 3 );
