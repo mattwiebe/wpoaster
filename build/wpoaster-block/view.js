@@ -16937,10 +16937,9 @@ async function doPost(content) {
     content,
     status: 'publish'
   });
+  // @todo: make this go back and add the skeet link to the post, maybe postmeta, maybe content
   doSkeet(content);
 }
-
-// @todo: make this go back and add the skeet link to the post, maybe meta, maybe content
 async function doSkeet(content) {
   const agent = await getAgent();
   return agent.post({

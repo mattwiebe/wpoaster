@@ -19,10 +19,10 @@ async function doPost( content ) {
 	const { saveEntityRecord } = dispatch( coreStore );
 	const title = content.length >= 140 ? content.substring( 0, 140 ) + '...' : content;
 	await saveEntityRecord( 'postType', 'post', { title, content, status: 'publish' } );
+	// @todo: make this go back and add the skeet link to the post, maybe postmeta, maybe content
 	doSkeet( content );
 }
 
-// @todo: make this go back and add the skeet link to the post, maybe meta, maybe content
 async function doSkeet( content ) {
 	const agent = await getAgent();
 	return agent.post( {
