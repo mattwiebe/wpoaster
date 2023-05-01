@@ -5,17 +5,13 @@ import { dispatch } from '@wordpress/data';
 import { store as coreStore } from '@wordpress/core-data';
 let agent;
 
-const logIn = async () => {
-	const agent = new BskyAgent({ service: 'https://bsky.social/' });
-	await agent.login( window._wpoasterLogin );
-	return agent;
-}
-
 async function getAgent() {
 	if ( agent ) {
 		return agent;
 	}
-	await logIn().then( result => agent = result );
+	const newAgent = new BskyAgent( { service: 'https://bsky.social/' } );
+	await newAgent.login( window._wpoasterLogin );
+	agent = newAgent;
 	return agent;
 }
 

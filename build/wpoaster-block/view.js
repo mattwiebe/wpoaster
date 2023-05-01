@@ -16916,18 +16916,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let agent;
-const logIn = async () => {
-  const agent = new _atproto_api__WEBPACK_IMPORTED_MODULE_2__.BskyAgent({
-    service: 'https://bsky.social/'
-  });
-  await agent.login(window._wpoasterLogin);
-  return agent;
-};
 async function getAgent() {
   if (agent) {
     return agent;
   }
-  await logIn().then(result => agent = result);
+  const newAgent = new _atproto_api__WEBPACK_IMPORTED_MODULE_2__.BskyAgent({
+    service: 'https://bsky.social/'
+  });
+  await newAgent.login(window._wpoasterLogin);
+  agent = newAgent;
   return agent;
 }
 async function doPost(content) {
