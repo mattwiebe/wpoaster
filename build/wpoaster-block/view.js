@@ -16889,6 +16889,25 @@ var BskyAgent = class extends AtpAgent {
 
 /***/ }),
 
+/***/ "./src/wpoaster-block/setup-text.js":
+/*!******************************************!*\
+  !*** ./src/wpoaster-block/setup-text.js ***!
+  \******************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SetupText": function() { return /* binding */ SetupText; }
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+function SetupText() {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "You need to add these constants to ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("code", null, "wp-config.php"), ". If you don't know what that means, this plugin isn't for you, yet."), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("pre", null, "define( 'WPOASTER_LOGIN',    'yourhandle.bsky.social' );", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("br", null), "define( 'WPOASTER_PASSWORD', 'Use an App Password!' );"));
+}
+
+/***/ }),
+
 /***/ "./src/wpoaster-block/wpoast-component.js":
 /*!************************************************!*\
   !*** ./src/wpoaster-block/wpoast-component.js ***!
@@ -16909,6 +16928,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _wordpress_core_data__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/core-data */ "@wordpress/core-data");
 /* harmony import */ var _wordpress_core_data__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_core_data__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _setup_text__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./setup-text */ "./src/wpoaster-block/setup-text.js");
+
 
 
 
@@ -16916,6 +16937,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let agent;
+const getLogin = () => {
+  return window._wpoasterLogin || {};
+};
 async function getAgent() {
   if (agent) {
     return agent;
@@ -16923,7 +16947,7 @@ async function getAgent() {
   const newAgent = new _atproto_api__WEBPACK_IMPORTED_MODULE_2__.BskyAgent({
     service: 'https://bsky.social/'
   });
-  await newAgent.login(window._wpoasterLogin);
+  await newAgent.login(getLogin());
   agent = newAgent;
   return agent;
 }
@@ -16981,6 +17005,8 @@ const BskyProfile = () => {
   }), "Poasting as ", name, " to ", service.host);
 };
 const WPoaster = () => {
+  const login = getLogin();
+  const hasLogin = !!(login.password && login.password.length && login.identifier && login.identifier.length);
   const limit = 300;
   const [text, setText] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)('');
   const disabled = text.length > limit;
@@ -16988,6 +17014,11 @@ const WPoaster = () => {
     doPost(text);
     setText('');
   };
+  if (!hasLogin) {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "wpoaster-block wpoaster-help"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_setup_text__WEBPACK_IMPORTED_MODULE_5__.SetupText, null));
+  }
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "wpoaster-block"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextareaControl, {

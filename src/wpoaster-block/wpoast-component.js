@@ -3,14 +3,19 @@ import { useState, useEffect } from '@wordpress/element';
 import { BskyAgent } from '@atproto/api';
 import { dispatch } from '@wordpress/data';
 import { store as coreStore } from '@wordpress/core-data';
+import { SetupText } from './setup-text';
 let agent;
+
+const getLogin = () => {
+	return window._wpoasterLogin || {};
+}
 
 async function getAgent() {
 	if ( agent ) {
 		return agent;
 	}
 	const newAgent = new BskyAgent( { service: 'https://bsky.social/' } );
-	await newAgent.login( window._wpoasterLogin );
+	await newAgent.login( getLogin() );
 	agent = newAgent;
 	return agent;
 }
@@ -56,12 +61,22 @@ const BskyProfile = () => {
 }
 
 export const WPoaster = () => {
+	const login = getLogin();
+	const hasLogin = !! ( login.password && login.password.length && login.identifier && login.identifier.length );
 	const limit = 300;
 	const [ text, setText ] = useState( '' );
 	const disabled = text.length > limit;
 	const sendPost = ( text ) => {
 		doPost( text );
 		setText( '' );
+	}
+
+	if ( ! hasLogin ) {
+		return (
+			<div className="wpoaster-block wpoaster-help">
+				<SetupText />
+			</div>
+		);
 	}
 
 	return (

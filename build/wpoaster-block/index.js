@@ -14,6 +14,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _setup_text__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./setup-text */ "./src/wpoaster-block/setup-text.js");
+
 
 function edit(_ref) {
   let {
@@ -21,7 +23,26 @@ function edit(_ref) {
   } = _ref;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: className
-  }, "This is a placeholder for the frontend WPoast function that allows you to post to Bluesky and WP from one simple Textbox. ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("br", null), "You will need to add these constants to ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("code", null, "wp-config.php"), ". If you don't know what that means, this plugin isn't for you yet.", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("pre", null, "define( 'WPOASTER_LOGIN',    'yourhandle.bsky.social' );", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("br", null), "define( 'WPOASTER_PASSWORD', 'Use an App Password!' );"));
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_setup_text__WEBPACK_IMPORTED_MODULE_1__.SetupText, null));
+}
+
+/***/ }),
+
+/***/ "./src/wpoaster-block/setup-text.js":
+/*!******************************************!*\
+  !*** ./src/wpoaster-block/setup-text.js ***!
+  \******************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SetupText": function() { return /* binding */ SetupText; }
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+function SetupText() {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "You need to add these constants to ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("code", null, "wp-config.php"), ". If you don't know what that means, this plugin isn't for you, yet."), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("pre", null, "define( 'WPOASTER_LOGIN',    'yourhandle.bsky.social' );", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("br", null), "define( 'WPOASTER_PASSWORD', 'Use an App Password!' );"));
 }
 
 /***/ }),
