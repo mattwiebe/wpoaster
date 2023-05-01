@@ -23,5 +23,5 @@ function register_wpoaster_block() {
 	wp_add_inline_script( 'mw-wpoaster-view-script', $script, 'before' );
 }
 function render_wpoaster_block( $attrs, $content, $block ) {
-	return '<div class="wpoaster-block">We are so back</div>';
+	return '<div class="wpoaster-block">WPOAST</div>';
 }
