@@ -16935,20 +16935,20 @@ async function doPost(content) {
     saveEntityRecord
   } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.dispatch)(_wordpress_core_data__WEBPACK_IMPORTED_MODULE_4__.store);
   const title = content.length >= 140 ? content.substring(0, 140) + '...' : content;
-  return saveEntityRecord('postType', 'post', {
+  await saveEntityRecord('postType', 'post', {
     title,
     content,
     status: 'publish'
-  }).then(result => {
-    return doSkeet(content);
   });
+  doSkeet(content);
 }
+
+// @todo: make this go back and add the skeet link to the post, maybe meta, maybe content
 async function doSkeet(content) {
-  return getAgent().then(agent => {
-    agent.post({
-      text: content,
-      createdAt: new Date().toISOString()
-    }).then(result => result);
+  const agent = await getAgent();
+  return agent.post({
+    text: content,
+    createdAt: new Date().toISOString()
   });
 }
 const BskyProfile = () => {

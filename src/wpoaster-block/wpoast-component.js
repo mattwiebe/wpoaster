@@ -22,17 +22,16 @@ async function getAgent() {
 async function doPost( content ) {
 	const { saveEntityRecord } = dispatch( coreStore );
 	const title = content.length >= 140 ? content.substring( 0, 140 ) + '...' : content;
-	return saveEntityRecord( 'postType', 'post', { title, content, status: 'publish' } ).then( result => {
-		return doSkeet( content );
-	} );
+	await saveEntityRecord( 'postType', 'post', { title, content, status: 'publish' } );
+	doSkeet( content );
 }
 
+// @todo: make this go back and add the skeet link to the post, maybe meta, maybe content
 async function doSkeet( content ) {
-	return getAgent().then( agent => {
-		agent.post( {
-			text: content,
-			createdAt: new Date().toISOString(),
-		} ).then( result => result );
+	const agent = await getAgent();
+	return agent.post( {
+		text: content,
+		createdAt: new Date().toISOString(),
 	} );
 }
 
