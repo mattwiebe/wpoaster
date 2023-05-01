@@ -1,4 +1,14 @@
 <?php
+/**
+ * Plugin Name: WPoaster
+ * Plugin URI: https://github.com/mattwiebe/wpoaster
+ * Description: A block to post to WordPress and Bluesky
+ * Author: Matt Wiebe
+ * Author URI: https://mattwie.be
+ * Version: 0.1.0
+ * License: GPL2+
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.txt
+ */
 
 add_action( 'init', 'register_wpoaster_block' );
 function register_wpoaster_block() {
