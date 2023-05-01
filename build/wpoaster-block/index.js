@@ -41,16 +41,6 @@ module.exports = window["wp"]["blocks"];
 
 module.exports = window["wp"]["element"];
 
-/***/ }),
-
-/***/ "./src/wpoaster-block/block.json":
-/*!***************************************!*\
-  !*** ./src/wpoaster-block/block.json ***!
-  \***************************************/
-/***/ (function(module) {
-
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"mw/wpoaster","title":"WPoaster","category":"other","description":"Render a post box for WP + Bluesky","editorScript":"file:./index.js","viewScript":"file:./view.js"}');
-
 /***/ })
 
 /******/ 	});
@@ -130,19 +120,14 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./block.json */ "./src/wpoaster-block/block.json");
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/wpoaster-block/edit.js");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./edit */ "./src/wpoaster-block/edit.js");
 
 
-
-const save = _ref => {
-  let {
-    attributes
-  } = _ref;
-  return '<div class="wpoaster-block">From JS Save!</div>';
+const save = () => {
+  return '<div class="wpoaster-block" />';
 };
-(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)(_block_json__WEBPACK_IMPORTED_MODULE_1__, {
-  edit: _edit__WEBPACK_IMPORTED_MODULE_2__.edit,
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)('mw/wpoaster', {
+  edit: _edit__WEBPACK_IMPORTED_MODULE_1__.edit,
   save
 });
 }();

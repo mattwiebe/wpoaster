@@ -1,9 +1,7 @@
 import { registerBlockType } from '@wordpress/blocks';
-import metadata from './block.json';
 import { edit } from './edit';
-
-const save = ( { attributes } ) => {
-	return '<div class="wpoaster-block">From JS Save!</div>';
+const save = () => {
+	return '<div class="wpoaster-block" />';
 }
 
-registerBlockType( metadata, { edit, save } );
+registerBlockType( 'mw/wpoaster', { edit, save } );
