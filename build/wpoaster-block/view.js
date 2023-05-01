@@ -16915,6 +16915,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+let agent;
 const logIn = async () => {
   const agent = new _atproto_api__WEBPACK_IMPORTED_MODULE_2__.BskyAgent({
     service: 'https://bsky.social/'
@@ -16923,7 +16924,9 @@ const logIn = async () => {
   return agent;
 };
 async function getAgent() {
-  let agent;
+  if (agent) {
+    return agent;
+  }
   await logIn().then(result => agent = result);
   return agent;
 }
@@ -16945,11 +16948,42 @@ async function doSkeet(content) {
     agent.post({
       text: content,
       createdAt: new Date().toISOString()
-    }).then(result => {
-      return result;
-    });
+    }).then(result => result);
   });
 }
+const BskyProfile = () => {
+  const [service, setService] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)();
+  const [profile, setProfile] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)();
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    getAgent().then(agent => {
+      setService(agent.service);
+      agent.getProfile({
+        actor: agent.session.did
+      }).then(result => setProfile(result.data));
+    });
+  }, []);
+  if (!profile) {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, "Loading Profile...");
+  }
+  const {
+    avatar,
+    displayName,
+    handle
+  } = profile;
+  const name = `@${handle}`;
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "bsky-profile",
+    style: {
+      margin: '1em 0'
+    }
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: avatar,
+    alt: handle,
+    title: name,
+    width: 16,
+    height: 16
+  }), "Poasting as ", name, " to ", service.host);
+};
 const WPoaster = () => {
   const limit = 300;
   const [text, setText] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)('');
@@ -16964,7 +16998,7 @@ const WPoaster = () => {
     label: "WPoast",
     value: text,
     onChange: value => setText(value)
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(BskyProfile, null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
     isPrimary: true,
     disabled: disabled,
     onClick: () => sendPost(text)
