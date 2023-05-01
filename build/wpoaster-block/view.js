@@ -16946,7 +16946,6 @@ async function doSkeet(content) {
       text: content,
       createdAt: new Date().toISOString()
     }).then(result => {
-      console.log('result', result);
       return result;
     });
   });
