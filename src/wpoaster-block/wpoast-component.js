@@ -38,12 +38,14 @@ async function doSkeet( content ) {
 
 
 export const WPoaster = () => {
+	const limit = 300;
 	const [ text, setText ] = useState( '' );
-
+	const disabled = text.length > limit;
 	const sendPost = ( text ) => {
 		doPost( text );
 		setText( '' );
 	}
+
 	return (
 		<div className="wpoaster-block">
 			<TextareaControl
@@ -51,7 +53,8 @@ export const WPoaster = () => {
 				value={ text }
 				onChange={ ( value ) => setText( value ) }
 			/>
-			<Button isPrimary onClick={ () => sendPost( text ) }>WPoast!</Button>
+			<Button isPrimary disabled={ disabled } onClick={ () => sendPost( text ) }>WPoast It!</Button>
+			{ ' ' + text.length } / { limit } chars
 		</div>
 	);
 }

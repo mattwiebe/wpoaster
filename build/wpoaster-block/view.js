@@ -16951,7 +16951,9 @@ async function doSkeet(content) {
   });
 }
 const WPoaster = () => {
+  const limit = 300;
   const [text, setText] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  const disabled = text.length > limit;
   const sendPost = text => {
     doPost(text);
     setText('');
@@ -16964,8 +16966,9 @@ const WPoaster = () => {
     onChange: value => setText(value)
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
     isPrimary: true,
+    disabled: disabled,
     onClick: () => sendPost(text)
-  }, "WPoast!"));
+  }, "WPoast It!"), ' ' + text.length, " / ", limit, " chars");
 };
 
 /***/ }),
