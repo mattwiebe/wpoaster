@@ -23,9 +23,14 @@ async function getAgent() {
 async function doPost( content ) {
 	const { saveEntityRecord } = dispatch( coreStore );
 	const title = content.length >= 140 ? content.substring( 0, 140 ) + '...' : content;
-	await saveEntityRecord( 'postType', 'post', { title, content, status: 'publish' } );
-	// @todo: make this go back and add the skeet link to the post, maybe postmeta, maybe content
-	doSkeet( content );
+	const post = await saveEntityRecord( 'postType', 'post', { title, content, status: 'publish' } );
+	const { link } = post;
+	const skeetContent = `${ content }\n\nWPoasted from ${ link }`;
+	const skeet = await doSkeet( skeetContent );
+	const skeetId = skeet.uri.split('/').pop();
+	const skeetLink = `https://staging.bsky.app/profile/mattwie.be/post/${ skeetId }`;
+	const contentWithSkeetLink = `${ content }\n\n<a href="${ skeetLink }">Link to Skeet</a>`;
+	return saveEntityRecord( 'postType', 'post', { id: post.id, content: contentWithSkeetLink } );
 }
 
 async function doSkeet( content ) {
