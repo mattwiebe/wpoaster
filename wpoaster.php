@@ -23,5 +23,8 @@ function register_wpoaster_block() {
 	wp_add_inline_script( 'mw-wpoaster-view-script', $script, 'before' );
 }
 function render_wpoaster_block( $attrs, $content, $block ) {
+	if ( ! is_user_logged_in() ) {
+		return '<div class="wpoaster-block-inactive">You must be logged in to poast.</div>';
+	}
 	return '<div class="wpoaster-block">WPOAST</div>';
 }
