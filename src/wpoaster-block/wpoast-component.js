@@ -109,9 +109,11 @@ export const WPoaster = () => {
 
 	const sendPost = async ( text ) => {
 		const { post, skeet } = await doPost( text, service, profile );
-		const newLinks = [];
-		newLinks.push( { url: post.link, text: 'Local Post' } );
-		newLinks.push( { url: maybeRewriteSkeetLink( skeet.link ), text: 'Skeet' } );
+		const newLinks = [
+			{ url: post.link, text: 'Local Post' },
+			{ url: maybeRewriteSkeetLink( skeet.link ), text: 'Skeet' },
+		];
+
 		setLinks( links.concat( newLinks ) );
 		setText( '' );
 	}
