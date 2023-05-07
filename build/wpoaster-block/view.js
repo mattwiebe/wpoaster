@@ -17075,7 +17075,7 @@ const WPoaster = () => {
       url: maybeRewriteSkeetLink(skeet.link),
       text: 'Skeet'
     }];
-    setLinks(links.concat(newLinks));
+    setLinks(newLinks.concat(links));
     setText('');
   };
   if (!hasLogin) {
