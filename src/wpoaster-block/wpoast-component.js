@@ -21,7 +21,15 @@ async function getAgent() {
 }
 
 function getSkeetLink( service, profile, $id ) {
-	return `https://${ service.host }/profile/${ profile.handle }/post/${ $id }`;
+	return `${ service.origin }/profile/${ profile.handle }/post/${ $id }`;
+}
+
+function maybeRewriteSkeetLink( link ) {
+	const { doStagingRewrite } = getLogin();
+	if ( ! doStagingRewrite ) {
+		return link;
+	}
+	return link.replace( 'bsky.social', 'staging.bsky.app' );
 }
 
 async function doPost( content, service, profile ) {
@@ -103,7 +111,7 @@ export const WPoaster = () => {
 		const { post, skeet } = await doPost( text, service, profile );
 		const newLinks = [];
 		newLinks.push( { url: post.link, text: 'Local Post' } );
-		newLinks.push( { url: skeet.link, text: 'Skeet' } );
+		newLinks.push( { url: maybeRewriteSkeetLink( skeet.link ), text: 'Skeet' } );
 		setLinks( links.concat( newLinks ) );
 		setText( '' );
 	}
